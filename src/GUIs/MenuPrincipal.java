@@ -55,7 +55,7 @@ public class MenuPrincipal extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Conversor de Moneda");
-		mntmNewMenuItem.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/coin16.png")));
+		mntmNewMenuItem.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/flujo-de-dinero.png")));
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Conversor de Temperatura");
@@ -73,6 +73,7 @@ public class MenuPrincipal extends JFrame {
 		mntmNewMenuItem_3.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/website16.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_3);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(231, 237, 234));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
