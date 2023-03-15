@@ -1,0 +1,16 @@
+MENÚ CONVERSORES:
+Icono "Conversor de Moneda":
+<a href="https://www.flaticon.es/iconos-gratis/negocios-y-finanzas" title="negocios y finanzas iconos">Negocios y finanzas iconos creados por Ehtisham Abid - Flaticon</a>
+Icono "Conversor de Temperatura":
+<a href="https://www.flaticon.com/free-icons/temperature" title="temperature icons">Temperature icons created by Freepik - Flaticon</a>
+Icono de "salida":
+<a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by Amazona Adorada - Flaticon</a>
+
+MENÚ AYUDA:
+Icono "Acerca de":
+<a href="https://www.flaticon.com/free-icons/disclaimer" title="disclaimer icons">Disclaimer icons created by Fragneel - Flaticon</a>
+
+Imagen de botón "Conversor Moneda":
+<a href="https://www.flaticon.com/free-icons/business-and-finance" title="business and finance icons">Business and finance icons created by Ahmad Yafie - Flaticon</a>
+Imagen de botón "Conversor Tempreatura:
+<a href="https://www.flaticon.com/free-icons/hot" title="hot icons">Hot icons created by Freepik - Flaticon</a>
