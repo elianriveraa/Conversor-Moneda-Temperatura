@@ -17,14 +17,19 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import java.awt.Frame;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuPrincipal extends JFrame {
-
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
+	private ConversorMoneda ventanam;
+	private ConversorTemperatura ventanat;
+	private JPanel panelContenidoMenu;
+	
+	/*
+	 * Inicio de la aplicación
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,11 +42,12 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
+	
+	/*
+	 * Inicio diseño de aplicación
 	 */
-	public MenuPrincipal() {
+	
+	void designGUI() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuPrincipal.class.getResource("/iconos64/abstract.png")));
 		setTitle("Conversor de Moneda - Temperatura");
@@ -51,63 +57,82 @@ public class MenuPrincipal extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Conversores");
-		menuBar.add(mnNewMenu);
+		JMenu menuOpciones = new JMenu("Opciones");
+		menuBar.add(menuOpciones);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Conversor de Moneda");
-		mntmNewMenuItem.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/flujo-de-dinero.png")));
-		mnNewMenu.add(mntmNewMenuItem);
+		JMenuItem optionConMoneda = new JMenuItem("Conversor de Moneda");
+		optionConMoneda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarMoneda();
+			}
+		});
+		optionConMoneda.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/flujo-de-dinero.png")));
+		menuOpciones.add(optionConMoneda);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Conversor de Temperatura");
-		mntmNewMenuItem_1.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/temperature16.png")));
-		mnNewMenu.add(mntmNewMenuItem_1);
+		JMenuItem optionConTemperatura = new JMenuItem("Conversor de Temperatura");
+		optionConTemperatura.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/temperature16.png")));
+		menuOpciones.add(optionConTemperatura);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Salir");
-		mntmNewMenuItem_2.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/logout.png")));
-		mnNewMenu.add(mntmNewMenuItem_2);
+		JMenuItem optionSalir = new JMenuItem("Salir");
+		optionSalir.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/logout.png")));
+		menuOpciones.add(optionSalir);
 		
-		JMenu mnNewMenu_1 = new JMenu("Ayuda");
-		menuBar.add(mnNewMenu_1);
+		JMenu menuAyuda = new JMenu("Ayuda");
+		menuBar.add(menuAyuda);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Acerca de");
-		mntmNewMenuItem_3.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/website16.png")));
-		mnNewMenu_1.add(mntmNewMenuItem_3);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(231, 237, 234));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		JMenuItem optionAcercade = new JMenuItem("Acerca de");
+		optionAcercade.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/website16.png")));
+		menuAyuda.add(optionAcercade);
+		panelContenidoMenu = new JPanel();
+		panelContenidoMenu.setBackground(new Color(231, 237, 234));
+		panelContenidoMenu.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
+		setContentPane(panelContenidoMenu);
 		
-		JButton btnNewButton = new JButton("Conversor Moneda");
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
-		btnNewButton.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/money-exchange.png")));
-		btnNewButton.setBackground(new Color(234, 242, 134));
+		JButton BtnConMoneda = new JButton("Conversor Moneda");
+		BtnConMoneda.setFont(new Font("Arial", Font.BOLD, 16));
+		BtnConMoneda.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/money-exchange.png")));
+		BtnConMoneda.setBackground(new Color(234, 242, 134));
 		
-		JButton btnNewButton_1 = new JButton("Conversor Temperatura");
-		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 16));
-		btnNewButton_1.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/hot.png")));
-		btnNewButton_1.setBackground(new Color(243, 138, 133));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+		JButton btnConTemperatura = new JButton("Conversor Temperatura");
+		btnConTemperatura.setFont(new Font("Arial", Font.BOLD, 16));
+		btnConTemperatura.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/hot.png")));
+		btnConTemperatura.setBackground(new Color(243, 138, 133));
+		GroupLayout gl_panelContenidoMenu = new GroupLayout(panelContenidoMenu);
+		gl_panelContenidoMenu.setHorizontalGroup(
+			gl_panelContenidoMenu.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelContenidoMenu.createSequentialGroup()
 					.addGap(64)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnNewButton_1)
+					.addGroup(gl_panelContenidoMenu.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelContenidoMenu.createSequentialGroup()
+							.addComponent(btnConTemperatura)
 							.addPreferredGap(ComponentPlacement.RELATED, 3, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+						.addComponent(BtnConMoneda, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
 					.addGap(68))
 		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+		gl_panelContenidoMenu.setVerticalGroup(
+			gl_panelContenidoMenu.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panelContenidoMenu.createSequentialGroup()
 					.addGap(46)
-					.addComponent(btnNewButton)
+					.addComponent(BtnConMoneda)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnConTemperatura, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(63))
 		);
-		contentPane.setLayout(gl_contentPane);
+		panelContenidoMenu.setLayout(gl_panelContenidoMenu);
+	}
+
+	
+	public MenuPrincipal() {
+		designGUI();
+		this.setLocationRelativeTo(null);
+	}
+	
+	
+	void cargarMoneda() {
+		ventanam = new ConversorMoneda();
+		//ventanam.show();
+		ventanam.setVisible(true);
+		this.dispose();
 	}
 }
