@@ -154,7 +154,10 @@ public class ConversorMoneda extends JFrame {
 		btnRegresar.setBounds(10, 10, 36, 32);
 		contentPane.add(btnRegresar);
 		
+		
+		
 		btnConvertir = new JButton("Convertir");
+		
 		btnConvertir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				valorIngresado = Double.parseDouble(ingresoDatos1.getText());
@@ -185,7 +188,19 @@ public class ConversorMoneda extends JFrame {
 					e.consume();
 				}
 			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				habilitarConvertir();
+			}
 		});
+	}
+	
+	public void habilitarConvertir() {
+		if(!ingresoDatos1.getText().isEmpty()) {
+			btnConvertir.setEnabled(true);
+		} else {
+			btnConvertir.setEnabled(false);
+		}
 	}
 	
 	public double pesocop(double valor) {
@@ -221,6 +236,7 @@ public class ConversorMoneda extends JFrame {
 	public ConversorMoneda() {
 		designGUI();
 		this.setLocationRelativeTo(null);
+		btnConvertir.setEnabled(false);
 	}
 	
 	void RegresarMenu() {
