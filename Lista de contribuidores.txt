@@ -16,3 +16,5 @@ Imagen de botón "Conversor Moneda":
 <a href="https://www.flaticon.com/free-icons/business-and-finance" title="business and finance icons">Business and finance icons created by Ahmad Yafie - Flaticon</a>
 Imagen de botón "Conversor Tempreatura:
 <a href="https://www.flaticon.com/free-icons/hot" title="hot icons">Hot icons created by Freepik - Flaticon</a>
+Imagen de botón regresar:
+<a href="https://www.flaticon.com/free-icons/return" title="return icons">Return icons created by Uniconlabs - Flaticon</a>

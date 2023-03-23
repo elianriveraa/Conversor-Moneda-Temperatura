@@ -11,6 +11,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -70,10 +71,21 @@ public class MenuPrincipal extends JFrame {
 		menuOpciones.add(optionConMoneda);
 		
 		JMenuItem optionConTemperatura = new JMenuItem("Conversor de Temperatura");
+		optionConTemperatura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarTemperatura();
+			}
+		});
 		optionConTemperatura.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/temperature16.png")));
 		menuOpciones.add(optionConTemperatura);
 		
 		JMenuItem optionSalir = new JMenuItem("Salir");
+		optionSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea salir de la aplicación?","Salir"
+						,JOptionPane.YES_NO_OPTION)==0)System.exit(0);
+			}
+		});
 		optionSalir.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/logout.png")));
 		menuOpciones.add(optionSalir);
 		
@@ -81,6 +93,11 @@ public class MenuPrincipal extends JFrame {
 		menuBar.add(menuAyuda);
 		
 		JMenuItem optionAcercade = new JMenuItem("Acerca de");
+		optionAcercade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Desarrollado por: Elian Rivera");
+			}
+		});
 		optionAcercade.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/website16.png")));
 		menuAyuda.add(optionAcercade);
 		panelContenidoMenu = new JPanel();
@@ -90,11 +107,21 @@ public class MenuPrincipal extends JFrame {
 		setContentPane(panelContenidoMenu);
 		
 		JButton BtnConMoneda = new JButton("Conversor Moneda");
+		BtnConMoneda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarMoneda();
+			}
+		});
 		BtnConMoneda.setFont(new Font("Arial", Font.BOLD, 16));
 		BtnConMoneda.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/money-exchange.png")));
 		BtnConMoneda.setBackground(new Color(234, 242, 134));
 		
 		JButton btnConTemperatura = new JButton("Conversor Temperatura");
+		btnConTemperatura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarTemperatura();
+			}
+		});
 		btnConTemperatura.setFont(new Font("Arial", Font.BOLD, 16));
 		btnConTemperatura.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/hot.png")));
 		btnConTemperatura.setBackground(new Color(243, 138, 133));
@@ -128,11 +155,17 @@ public class MenuPrincipal extends JFrame {
 		this.setLocationRelativeTo(null);
 	}
 	
-	
 	void cargarMoneda() {
 		ventanam = new ConversorMoneda();
 		//ventanam.show();
 		ventanam.setVisible(true);
+		this.dispose();
+	}
+	
+	void cargarTemperatura() {
+		ventanat = new ConversorTemperatura();
+		//ventanam.show();
+		ventanat.setVisible(true);
 		this.dispose();
 	}
 }

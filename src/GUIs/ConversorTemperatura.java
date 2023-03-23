@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Toolkit;
 
 public class ConversorTemperatura extends JFrame {
 
@@ -30,6 +31,8 @@ public class ConversorTemperatura extends JFrame {
 	 * Create the frame.
 	 */
 	public ConversorTemperatura() {
+		setTitle("Conversor de Temperatura");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ConversorTemperatura.class.getResource("/iconos64/temperature.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
