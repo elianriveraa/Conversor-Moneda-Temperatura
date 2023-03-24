@@ -204,27 +204,122 @@ public class ConversorMoneda extends JFrame {
 	}
 	
 	public double pesocop(double valor) {
-		ConversorMoneda conversor = new ConversorMoneda();
-		double igual = 1, dolar = 0.00021, euro = 0.0002, libra = 0.00017, yen = 0.028, won = 0.27;
+		//ConversorMoneda conversor = new ConversorMoneda();
+		double copdolar = 0.00021, copeuro = 0.00020, coplibra = 0.00017, copyen = 0.028, copwon = 0.27;
+		double dolcop = 4745.28, doleuro = 0.93, dollibra = 0.82, dolyen = 130.74, dolwon = 1295.74;
+		double eurcop = 5110.29, eurdolar = 1.08, eurlibra = 0.88, euryen = 140.71, eurwon = 1393.12;
+		double libcop = 5807.05, libdolar = 1.22, libeuro = 1.14, libyen = 159.89, libwon = 1585.02;
+		double yencop = 36.33, yendolar = 0.0076, yeneuro = 0.0071, yenlibra = 0.0063, yenwon = 9.91;
+		double woncop = 36.33, wondolar = 0.0076, woneuro = 0.0071, wonlibra = 0.0063, wonyen = 9.91;
 		if((getLista1() == "---" || getLista2() == null) || (getLista1() == null || getLista2() == "---")){
 			JOptionPane.showMessageDialog(null, "Rellenar campos faltantes");
+		} else if(getLista1() == "Peso COP" && getLista2() == "Peso COP") {
+			resultado = valor * 1;
+			setResultado(resultado);
 		} else if(getLista1() == "Peso COP" && getLista2() == "Dolar") {
-			resultado = valor * dolar;
+			resultado = valor * copdolar;
 			setResultado(resultado);
 		} else if(getLista1() == "Peso COP" && getLista2() == "Euros") {
-			resultado = valor * euro;
+			resultado = valor * copeuro;
 			setResultado(resultado);
 		} else if(getLista1() == "Peso COP" && getLista2() == "Libra Esterlina") {
-			resultado = valor * libra;
+			resultado = valor * coplibra;
 			setResultado(resultado);
 		} else if(getLista1() == "Peso COP" && getLista2() == "Yen Japonés") {
-			resultado = valor * yen;
+			resultado = valor * copyen;
 			setResultado(resultado);
 		} else if(getLista1() == "Peso COP" && getLista2() == "Won sul-coreano") {
-			resultado = valor * won;
+			resultado = valor * copwon;
+			setResultado(resultado);
+		} else if(getLista1() == "Dolar" && getLista2() == "Dolar") {
+			resultado = valor * 1;
+			setResultado(resultado);
+		} else if(getLista1() == "Dolar" && getLista2() == "Peso COP") {
+			resultado = valor * dolcop;
 			setResultado(resultado);
 		} else if(getLista1() == "Dolar" && getLista2() == "Euros") {
-			resultado = dolar * euro;
+			resultado = valor * doleuro;
+			setResultado(resultado);
+		} else if(getLista1() == "Dolar" && getLista2() == "Libra Esterlina") {
+			resultado = valor * dollibra;
+			setResultado(resultado);
+		} else if(getLista1() == "Dolar" && getLista2() == "Yen Japonés") {
+			resultado = valor * dolyen;
+			setResultado(resultado);
+		} else if(getLista1() == "Dolar" && getLista2() == "Won sul-coreano") {
+			resultado = valor * dolwon;
+			setResultado(resultado);
+		} else if(getLista1() == "Euros" && getLista2() == "Euros") {
+			resultado = valor * 1;
+			setResultado(resultado);
+		} else if(getLista1() == "Euros" && getLista2() == "Peso COP") {
+			resultado = valor * eurcop;
+			setResultado(resultado);
+		} else if(getLista1() == "Euros" && getLista2() == "Dolar") {
+			resultado = valor * eurdolar;
+			setResultado(resultado);
+		} else if(getLista1() == "Euros" && getLista2() == "Libra Esterlina") {
+			resultado = valor * eurlibra;
+			setResultado(resultado);
+		} else if(getLista1() == "Euros" && getLista2() == "Yen Japonés") {
+			resultado = valor * euryen;
+			setResultado(resultado);
+		} else if(getLista1() == "Euros" && getLista2() == "Won sul-coreano") {
+			resultado = valor * eurwon;
+			setResultado(resultado);
+		} else if(getLista1() == "Libra Esterlina" && getLista2() == "Libra Esterlina") {
+			resultado = valor * 1;
+			setResultado(resultado);
+		} else if(getLista1() == "Libra Esterlina" && getLista2() == "Peso COP") {
+			resultado = valor * libcop;
+			setResultado(resultado);
+		} else if(getLista1() == "Libra Esterlina" && getLista2() == "Dolar") {
+			resultado = valor * libdolar;
+			setResultado(resultado);
+		} else if(getLista1() == "Libra Esterlina" && getLista2() == "Euros") {
+			resultado = valor * libeuro;
+			setResultado(resultado);
+		} else if(getLista1() == "Libra Esterlina" && getLista2() == "Yen Japonés") {
+			resultado = valor * libyen;
+			setResultado(resultado);
+		} else if(getLista1() == "Libra Esterlina" && getLista2() == "Won sul-coreano") {
+			resultado = valor * libwon;
+			setResultado(resultado);
+		} else if(getLista1() == "Yen Japonés" && getLista2() == "Yen Japonés") {
+			resultado = valor * 1;
+			setResultado(resultado);
+		} else if(getLista1() == "Yen Japonés" && getLista2() == "Peso COP") {
+			resultado = valor * yencop;
+			setResultado(resultado);
+		} else if(getLista1() == "Yen Japonés" && getLista2() == "Dolar") {
+			resultado = valor * yendolar;
+			setResultado(resultado);
+		} else if(getLista1() == "Yen Japonés" && getLista2() == "Euros") {
+			resultado = valor * yeneuro;
+			setResultado(resultado);
+		} else if(getLista1() == "Yen Japonés" && getLista2() == "Libra Esterlina") {
+			resultado = valor * yenlibra;
+			setResultado(resultado);
+		} else if(getLista1() == "Yen Japonés" && getLista2() == "Won sul-coreano") {
+			resultado = valor * yenwon;
+			setResultado(resultado);
+		} else if(getLista1() == "Won sul-coreano" && getLista2() == "Won sul-coreano") {
+			resultado = valor * 1;
+			setResultado(resultado);
+		} else if(getLista1() == "Won sul-coreano" && getLista2() == "Peso COP") {
+			resultado = valor * woncop;
+			setResultado(resultado);
+		} else if(getLista1() == "Won sul-coreano" && getLista2() == "Dolar") {
+			resultado = valor * wondolar;
+			setResultado(resultado);
+		} else if(getLista1() == "Won sul-coreano" && getLista2() == "Euros") {
+			resultado = valor * woneuro;
+			setResultado(resultado);
+		} else if(getLista1() == "Won sul-coreano" && getLista2() == "Libra Esterlina") {
+			resultado = valor * wonlibra;
+			setResultado(resultado);
+		} else if(getLista1() == "Won sul-coreano" && getLista2() == "Yen Japonés") {
+			resultado = valor * wonyen;
 			setResultado(resultado);
 		}
 		return 0;
