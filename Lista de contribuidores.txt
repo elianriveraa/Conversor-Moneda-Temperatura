@@ -17,4 +17,4 @@ Imagen de botón "Conversor Moneda":
 Imagen de botón "Conversor Tempreatura:
 <a href="https://www.flaticon.com/free-icons/hot" title="hot icons">Hot icons created by Freepik - Flaticon</a>
 Imagen de botón regresar:
-<a href="https://www.flaticon.com/free-icons/return" title="return icons">Return icons created by Uniconlabs - Flaticon</a>
+<a href="https://www.flaticon.es/iconos-gratis/flecha-hacia-atras" title="flecha hacia atrás iconos">Flecha hacia atrás iconos creados por Freepik - Flaticon</a>

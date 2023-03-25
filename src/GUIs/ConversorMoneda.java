@@ -63,14 +63,14 @@ public class ConversorMoneda extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 325);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(251, 250, 210));
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JComboBox<String> listaOp1 = new JComboBox<String>();
-		listaOp1.setBackground(new Color(241, 223, 182));
+		listaOp1.setBackground(Color.LIGHT_GRAY);
 		listaOp1.setFont(new Font("Arial", Font.BOLD, 16));
 		listaOp1.setBounds(37, 134, 175, 32);
 		contentPane.add(listaOp1);
@@ -91,7 +91,7 @@ public class ConversorMoneda extends JFrame {
 		});
 		
 		JComboBox<String> listaOp2 = new JComboBox<String>();
-		listaOp2.setBackground(new Color(241, 223, 182));
+		listaOp2.setBackground(Color.LIGHT_GRAY);
 		listaOp2.setFont(new Font("Arial", Font.BOLD, 16));
 		listaOp2.setBounds(222, 134, 170, 32);
 		contentPane.add(listaOp2);
@@ -112,7 +112,7 @@ public class ConversorMoneda extends JFrame {
 		});
 		
 		panel = new JPanel();
-		panel.setBackground(new Color(251, 250, 210));
+		panel.setBackground(Color.WHITE);
 		panel.setBounds(10, 52, 416, 59);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -122,7 +122,7 @@ public class ConversorMoneda extends JFrame {
 		ingresoDatos1.setHorizontalAlignment(SwingConstants.CENTER);
 		ingresoDatos1.setBounds(25, 10, 357, 39);
 		panel.add(ingresoDatos1);
-		ingresoDatos1.setBackground(new Color(241, 223, 182));
+		ingresoDatos1.setBackground(Color.LIGHT_GRAY);
 		ingresoDatos1.setFont(new Font("Arial", Font.BOLD, 16));
 		ingresoDatos1.setColumns(10);
 		
@@ -150,13 +150,14 @@ public class ConversorMoneda extends JFrame {
 				RegresarMenu();
 			}
 		});
-		btnRegresar.setIcon(new ImageIcon(ConversorMoneda.class.getResource("/iconos24/return(1).png")));
-		btnRegresar.setBounds(10, 10, 36, 32);
+		btnRegresar.setIcon(new ImageIcon(ConversorMoneda.class.getResource("/iconos64/regresar(32).png")));
+		btnRegresar.setBounds(10, 10, 32, 32);
 		contentPane.add(btnRegresar);
 		
 		
 		
 		btnConvertir = new JButton("Convertir");
+		btnConvertir.setBackground(Color.LIGHT_GRAY);
 		
 		btnConvertir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -204,7 +205,6 @@ public class ConversorMoneda extends JFrame {
 	}
 	
 	public double pesocop(double valor) {
-		//ConversorMoneda conversor = new ConversorMoneda();
 		double copdolar = 0.00021, copeuro = 0.00020, coplibra = 0.00017, copyen = 0.028, copwon = 0.27;
 		double dolcop = 4745.28, doleuro = 0.93, dollibra = 0.82, dolyen = 130.74, dolwon = 1295.74;
 		double eurcop = 5110.29, eurdolar = 1.08, eurlibra = 0.88, euryen = 140.71, eurwon = 1393.12;

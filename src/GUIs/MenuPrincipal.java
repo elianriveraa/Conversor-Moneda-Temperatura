@@ -101,7 +101,7 @@ public class MenuPrincipal extends JFrame {
 		optionAcercade.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos16/website16.png")));
 		menuAyuda.add(optionAcercade);
 		panelContenidoMenu = new JPanel();
-		panelContenidoMenu.setBackground(new Color(231, 237, 234));
+		panelContenidoMenu.setBackground(Color.WHITE);
 		panelContenidoMenu.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(panelContenidoMenu);
@@ -114,7 +114,7 @@ public class MenuPrincipal extends JFrame {
 		});
 		BtnConMoneda.setFont(new Font("Arial", Font.BOLD, 16));
 		BtnConMoneda.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/money-exchange.png")));
-		BtnConMoneda.setBackground(new Color(234, 242, 134));
+		BtnConMoneda.setBackground(Color.LIGHT_GRAY);
 		
 		JButton btnConTemperatura = new JButton("Conversor Temperatura");
 		btnConTemperatura.addActionListener(new ActionListener() {
@@ -124,7 +124,7 @@ public class MenuPrincipal extends JFrame {
 		});
 		btnConTemperatura.setFont(new Font("Arial", Font.BOLD, 16));
 		btnConTemperatura.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/iconos24/hot.png")));
-		btnConTemperatura.setBackground(new Color(243, 138, 133));
+		btnConTemperatura.setBackground(Color.LIGHT_GRAY);
 		GroupLayout gl_panelContenidoMenu = new GroupLayout(panelContenidoMenu);
 		gl_panelContenidoMenu.setHorizontalGroup(
 			gl_panelContenidoMenu.createParallelGroup(Alignment.LEADING)
