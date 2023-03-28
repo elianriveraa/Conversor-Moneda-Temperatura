@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ConversorTemperatura extends JFrame {
 
@@ -24,6 +26,9 @@ public class ConversorTemperatura extends JFrame {
 	private JTextField textKelvin;
 	private JTextField textRankine;
 	private MenuPrincipal ventanamenu;
+	private double valorCelsius, celsius, fahrenheit, kelvin, rankine, resultado;
+
+	
 
 	/**
 	 * Launch the application.
@@ -78,6 +83,22 @@ public class ConversorTemperatura extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		textCelsius = new JTextField();
+		
+		
+		textCelsius.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				num(textCelsius);
+				valorCelsius = Double.parseDouble(textCelsius.getText());
+				//operacionCelsius(valorCelsius);
+				operacionFahrenheit(valorCelsius);
+				textFahrenheit.setText(String.valueOf(operacionFahrenheit(valorCelsius)));
+				//textFahrenheit.setText(textCelsius.getText());
+				textKelvin.setText(textCelsius.getText());
+				textRankine.setText(textCelsius.getText());
+				
+			}
+		});
 		textCelsius.setFont(new Font("Arial", Font.BOLD, 14));
 		textCelsius.setBounds(27, 117, 210, 32);
 		contentPane.add(textCelsius);
@@ -303,4 +324,75 @@ public class ConversorTemperatura extends JFrame {
 		ventanamenu.setVisible(true);
 		this.dispose();
 	}
+	
+	
+	private void num(JTextField a) {
+	    a.addKeyListener(new KeyAdapter() {
+	        public void keyTyped(KeyEvent e) {
+	            char c = e.getKeyChar();
+	            String text = a.getText();
+	            if (!(Character.isDigit(c) || c == '.' || (c == '-' && text.length() == 0))) {
+	                e.consume();
+	            }
+	            if (c == '.' && text.contains(".")) {
+	                e.consume();
+	            }
+	        }
+	    });
+	}
+	
+	/*private void num(JTextField a) {
+		a.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if(!Character.isDigit(c) && c != '.') {
+					e.consume();
+				}
+				if(c == '.' && ingresoDatos1.getText().contains(".")) {
+					e.consume();
+				}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				habilitarConvertir();
+			}
+		});
+	}*/
+	
+	public double operacionCelsius(double valor) {
+		
+		return 0;
+	}
+	
+	public double operacionFahrenheit(double valor) {
+		fahrenheit = valor * 9/5 + 32;
+		if(fahrenheit > -459.67) {
+			return fahrenheit;
+		} else {
+			return 0;
+		}
+	}
+	
+	/*public void ecuaciones() {
+	textCelsius.addKeyListener(new KeyAdapter() {
+		@Override
+		public void keyReleased(KeyEvent e) {
+			valorCelsius = Double.parseDouble(textCelsius.getText());
+			operacion(valorCelsius);
+			textCelsius.setText(textCelsius.getText());
+			textFahrenheit.setText(textCelsius.getText());
+			textKelvin.setText(textCelsius.getText());
+			textRankine.setText(textCelsius.getText());
+		}
+	});
+	}*/
+	
+	public double getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(double resultado) {
+		this.resultado = resultado;
+	}	
+	
 }
