@@ -26,7 +26,8 @@ public class ConversorTemperatura extends JFrame {
 	private JTextField textKelvin;
 	private JTextField textRankine;
 	private MenuPrincipal ventanamenu;
-	private double valorCelsius, celsius, fahrenheit, kelvin, rankine, resultado;
+	private double  celsius, fahrenheit, kelvin, rankine, resultado;
+	private double valorCelsius, valorFahrenheit, valorKelvin, valorRankine;
 
 	
 
@@ -83,20 +84,20 @@ public class ConversorTemperatura extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		textCelsius = new JTextField();
-		
-		
 		textCelsius.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				num(textCelsius);
 				valorCelsius = Double.parseDouble(textCelsius.getText());
-				//operacionCelsius(valorCelsius);
-				operacionFahrenheit(valorCelsius);
-				textFahrenheit.setText(String.valueOf(operacionFahrenheit(valorCelsius)));
-				//textFahrenheit.setText(textCelsius.getText());
-				textKelvin.setText(textCelsius.getText());
-				textRankine.setText(textCelsius.getText());
-				
+				if(valorCelsius >= -273.15) {
+					textFahrenheit.setText(String.valueOf(celsiusFahrenheit(valorCelsius)));
+					textKelvin.setText(String.valueOf(celsiusKelvin(valorCelsius)));
+					textRankine.setText(String.valueOf(celsiusRankine(valorCelsius)));
+				} else {
+					textFahrenheit.setText("");
+					textKelvin.setText("");
+					textRankine.setText("");
+				}			
 			}
 		});
 		textCelsius.setFont(new Font("Arial", Font.BOLD, 14));
@@ -110,6 +111,22 @@ public class ConversorTemperatura extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		textFahrenheit = new JTextField();
+		textFahrenheit.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				num(textFahrenheit);
+				valorFahrenheit = Double.parseDouble(textFahrenheit.getText());
+				if(valorFahrenheit >= -459.67) {
+					textCelsius.setText(String.valueOf(fahrenheitCelsius(valorFahrenheit)));
+					textKelvin.setText(String.valueOf(fahrenheitKelvin(valorFahrenheit)));
+					textRankine.setText(String.valueOf(fahrenheitRankine(valorFahrenheit)));
+				} else {
+					textCelsius.setText("");
+					textKelvin.setText("");
+					textRankine.setText("");
+				}			
+			}
+		});
 		textFahrenheit.setFont(new Font("Arial", Font.BOLD, 14));
 		textFahrenheit.setColumns(10);
 		textFahrenheit.setBounds(27, 177, 210, 32);
@@ -121,12 +138,44 @@ public class ConversorTemperatura extends JFrame {
 		contentPane.add(lblNewLabel_1_2);
 		
 		textKelvin = new JTextField();
+		textKelvin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				num(textKelvin);
+				valorKelvin = Double.parseDouble(textKelvin.getText());
+				if(valorKelvin >= 0) {
+					textCelsius.setText(String.valueOf(kelvinCelsius(valorKelvin)));
+					textFahrenheit.setText(String.valueOf(kelvinFahrenheit(valorKelvin)));
+					textRankine.setText(String.valueOf(kelvinRankine(valorKelvin)));
+				} else {
+					textCelsius.setText("");
+					textFahrenheit.setText("");
+					textRankine.setText("");
+				}			
+			}
+		});
 		textKelvin.setFont(new Font("Arial", Font.BOLD, 14));
 		textKelvin.setColumns(10);
 		textKelvin.setBounds(27, 237, 210, 32);
 		contentPane.add(textKelvin);
 		
 		textRankine = new JTextField();
+		textRankine.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				num(textRankine);
+				valorRankine = Double.parseDouble(textRankine.getText());
+				if(valorRankine >= 0) {
+					textCelsius.setText(String.valueOf(rankineCelsius(valorRankine)));
+					textFahrenheit.setText(String.valueOf(rankineFahrenheit(valorRankine)));
+					textKelvin.setText(String.valueOf(rankineKelvin(valorRankine)));
+				} else {
+					textCelsius.setText("");
+					textFahrenheit.setText("");
+					textKelvin.setText("");
+				}			
+			}
+		});
 		textRankine.setFont(new Font("Arial", Font.BOLD, 14));
 		textRankine.setColumns(10);
 		textRankine.setBounds(27, 297, 210, 32);
@@ -166,25 +215,29 @@ public class ConversorTemperatura extends JFrame {
 		lblNewLabel_2_1_1_3.setBounds(30, 446, 120, 13);
 		contentPane.add(lblNewLabel_2_1_1_3);
 		
-		JButton btnNewButton = new JButton("°C");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnNewButton.setBounds(237, 117, 57, 32);
-		contentPane.add(btnNewButton);
+		JButton btnCelsius = new JButton("°C");
+		btnCelsius.setEnabled(false);
+		btnCelsius.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnCelsius.setBounds(237, 117, 57, 32);
+		contentPane.add(btnCelsius);
 		
-		JButton btnf = new JButton("°F");
-		btnf.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnf.setBounds(237, 177, 57, 32);
-		contentPane.add(btnf);
+		JButton btnFahrenheit = new JButton("°F");
+		btnFahrenheit.setEnabled(false);
+		btnFahrenheit.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnFahrenheit.setBounds(237, 177, 57, 32);
+		contentPane.add(btnFahrenheit);
 		
-		JButton btnK = new JButton("K");
-		btnK.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnK.setBounds(237, 237, 57, 32);
-		contentPane.add(btnK);
+		JButton btnKelvin = new JButton("K");
+		btnKelvin.setEnabled(false);
+		btnKelvin.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnKelvin.setBounds(237, 237, 57, 32);
+		contentPane.add(btnKelvin);
 		
-		JButton btnr = new JButton("°R");
-		btnr.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnr.setBounds(237, 297, 57, 32);
-		contentPane.add(btnr);
+		JButton btnRankine = new JButton("°R");
+		btnRankine.setEnabled(false);
+		btnRankine.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnRankine.setBounds(237, 297, 57, 32);
+		contentPane.add(btnRankine);
 		
 		JLabel lblNewLabel_4 = new JLabel("Conversión de Celsius a Fahrenheit");
 		lblNewLabel_4.setFont(new Font("Arial", Font.PLAIN, 10));
@@ -331,43 +384,119 @@ public class ConversorTemperatura extends JFrame {
 	        public void keyTyped(KeyEvent e) {
 	            char c = e.getKeyChar();
 	            String text = a.getText();
-	            if (!(Character.isDigit(c) || c == '.' || (c == '-' && text.length() == 0))) {
+	            
+	            if (!Character.isDigit(c) && c != '.' && c != '-') {
 	                e.consume();
-	            }
-	            if (c == '.' && text.contains(".")) {
+	            } else if ((c == '.' && text.contains(".")) || (c == '-' && text.length() > 0)) {
 	                e.consume();
 	            }
 	        }
 	    });
 	}
 	
-	/*private void num(JTextField a) {
-		a.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-				if(c == '.' && ingresoDatos1.getText().contains(".")) {
-					e.consume();
-				}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				habilitarConvertir();
-			}
-		});
-	}*/
-	
-	public double operacionCelsius(double valor) {
-		
-		return 0;
+	public double celsiusFahrenheit(double valor) {
+		fahrenheit = valor * 9/5 + 32;
+		if(fahrenheit >= -459.67) {
+			return Math.round(fahrenheit * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
 	}
 	
-	public double operacionFahrenheit(double valor) {
-		fahrenheit = valor * 9/5 + 32;
-		if(fahrenheit > -459.67) {
-			return fahrenheit;
+	public double celsiusKelvin(double valor) {
+		kelvin = valor + 273.15;
+		if(kelvin >= 0) {
+			return Math.round(kelvin * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double celsiusRankine(double valor) {
+		rankine = valor * 9/5 + 491.67;
+		if(rankine >= 0) {
+			return Math.round(rankine * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double fahrenheitCelsius(double valor) {
+		celsius = (valor - 32) * 5/9;
+		if(celsius >= -273.15) {
+			return Math.round(celsius * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double fahrenheitKelvin(double valor) {
+		kelvin = (valor + 459.67) * 5/9;
+		if(kelvin >= 0) {
+			return Math.round(kelvin * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double fahrenheitRankine(double valor) {
+		rankine = valor + 459.67;
+		if(rankine >= 0) {
+			return Math.round(rankine * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double kelvinCelsius(double valor) {
+		celsius = valor - 273.15;
+		if(celsius >= -273.15) {
+			return Math.round(celsius * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double kelvinFahrenheit(double valor) {
+		fahrenheit = valor - 459.67;
+		if(fahrenheit >= -459.67) {
+			return Math.round(fahrenheit * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double kelvinRankine(double valor) {
+		rankine = valor * 1.8;
+		if(rankine >= 0) {
+			return Math.round(rankine * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double rankineCelsius(double valor) {
+		celsius = (valor - 491.67)* 5/9;
+		if(celsius >= -273.15) {
+			return Math.round(celsius * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double rankineFahrenheit(double valor) {
+		fahrenheit = valor - 459.67;
+		if(fahrenheit >= -459.67) {
+			return Math.round(fahrenheit * 100.0) / 100.0;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double rankineKelvin(double valor) {
+		fahrenheit = valor * 5/9;
+		if(fahrenheit >= -459.67) {
+			return Math.round(fahrenheit * 100.0) / 100.0;
 		} else {
 			return 0;
 		}
