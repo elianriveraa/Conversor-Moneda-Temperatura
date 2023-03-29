@@ -383,11 +383,12 @@ public class ConversorTemperatura extends JFrame {
 	    a.addKeyListener(new KeyAdapter() {
 	        public void keyTyped(KeyEvent e) {
 	            char c = e.getKeyChar();
-	            String text = a.getText();
-	            
-	            if (!Character.isDigit(c) && c != '.' && c != '-') {
+	            String texto = a.getText();
+	            if(!Character.isDigit(c) && c != '.' && c != '-' ||
+	                    (c == '-' && !texto.isEmpty())) {
 	                e.consume();
-	            } else if ((c == '.' && text.contains(".")) || (c == '-' && text.length() > 0)) {
+	            }
+	            if(c == '.' && texto.contains(".")) {
 	                e.consume();
 	            }
 	        }
